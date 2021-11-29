@@ -1,0 +1,23 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Employee {
+  """Example field (placeholder)"""
+  employeeId: Int!
+  firstName: String!
+  lastName: String!
+  email: String!
+  phoneNumber: Int!
+  hireDate: String!
+  jobId: String!
+  salary: Int!
+  commisionPct: Int!
+  managerId: Int!
+  departmentId: Int!
+}
+
+type Query {
+  employees: [Employee!]!
+  employee(id: Int!): Employee!
+}

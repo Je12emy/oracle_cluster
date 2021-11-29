@@ -2,22 +2,25 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { EmployeesModule } from './employees/employees.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { Employee } from './employees/entities/employee.entity';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: "oracle",
-      host: "",
-      port: 123,
-      username: "sys",
+      host: "localhost",
+      port: 1521,
+      sid: 'orcl',
+      username: "hr",
       password: "root",
       database: "orcl",
-      entities: [],
-      synchronize: false
+      entities: [Employee],
+      synchronize: false,
     }),
     GraphQLModule.forRoot({
       debug: true,
-      playground: true
+      playground: true,
+      autoSchemaFile: 'schema.gpl'
     }),
     EmployeesModule
   ],
