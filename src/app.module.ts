@@ -16,6 +16,7 @@ import { Employee } from './employees/entities/employee.entity';
       database: "orcl",
       entities: [Employee],
       synchronize: false,
+      logging: 'all'
     }),
     GraphQLModule.forRoot({
       debug: true,
