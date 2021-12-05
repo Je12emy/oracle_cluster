@@ -5,16 +5,16 @@
 type Employee {
   """Example field (placeholder)"""
   employeeId: Int!
-  firstName: String!
+  firstName: String
   lastName: String!
   email: String!
-  phoneNumber: Int!
+  phoneNumber: String
   hireDate: String!
   jobId: String!
-  salary: Int!
-  commisionPct: Int!
-  managerId: Int!
-  departmentId: Int!
+  salary: Float
+  commissionPct: Float
+  managerId: Int
+  departmentId: Int
 }
 
 type Query {
