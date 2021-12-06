@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import CreateEmployee from './dto/create-employee.dto';
 import { Employee } from './entities/employee.entity';
 
 @Injectable()
@@ -15,5 +16,10 @@ export class EmployeesService {
 
   findOne(id: number) {
     return this.employeeRepository.findOne(id);
+  }
+
+  create(input: CreateEmployee) {
+    const employeeEntity = this.employeeRepository.create(input);
+    return this.employeeRepository.save(employeeEntity);
   }
 }

@@ -1,10 +1,12 @@
 import { ObjectType, Field, Int, Float } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity("EMPLOYEES")
 @ObjectType()
 export class Employee {
-  @PrimaryGeneratedColumn({ name: "EMPLOYEE_ID" })
+
+  @PrimaryColumn()
+  @Column({name: "EMPLOYEE_ID", type:"number", nullable: false, primary: true })
   @Field(() => Int, { description: 'Example field (placeholder)' })
   employeeId: number;
 
@@ -13,8 +15,8 @@ export class Employee {
   firstName?: string;
 
   @Column({ name: "LAST_NAME", type: "varchar2", length: 25, nullable: true })
-  @Field(() => String )
-  lastName: string;
+  @Field(() => String, {nullable: true} )
+  lastName?: string;
   
   @Column({ name: "EMAIL", type: "varchar2", length: 25, nullable: false })
   @Field(() => String)
