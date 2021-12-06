@@ -21,4 +21,9 @@ export class EmployeesResolver {
   createEmployee(@Args('createEmployeeInput') createEmployeeInput: CreateEmployee) {
     return this.employeesService.create(createEmployeeInput);
   }
+
+  @Mutation(() => Employee)
+  deleteEmployee(@Args('id', { type: () => Int }) id: number){
+    return this.employeesService.delete(id);
+  }
 }

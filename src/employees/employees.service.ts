@@ -22,4 +22,9 @@ export class EmployeesService {
     const employeeEntity = this.employeeRepository.create(input);
     return this.employeeRepository.save(employeeEntity);
   }
+
+  async delete(id: number) {
+    const employee = await this.findOne(id);
+    return this.employeeRepository.remove(employee);
+  }
 }
