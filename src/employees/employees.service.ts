@@ -25,8 +25,10 @@ export class EmployeesService {
   }
 
   async delete(id: number) {
-    const employee = await this.findOne(id);
-    return this.employeeRepository.remove(employee);
+    const employee = await this.employeeRepository.findOne(id);
+    await this.employeeRepository.remove(employee);
+    employee.employeeId = id;
+    return employee;
   }
 
   async update(id: number, input: UpdateEmployee) {
