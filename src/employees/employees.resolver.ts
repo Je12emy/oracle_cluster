@@ -2,6 +2,7 @@ import { Resolver, Query, Args, Int, Mutation } from '@nestjs/graphql';
 import { EmployeesService } from './employees.service';
 import { Employee } from './entities/employee.entity';
 import CreateEmployee from './dto/create-employee.dto';
+import UpdateEmployee from './dto/update-employee.dto';
 
 @Resolver(() => Employee)
 export class EmployeesResolver {
@@ -23,7 +24,12 @@ export class EmployeesResolver {
   }
 
   @Mutation(() => Employee)
-  deleteEmployee(@Args('id', { type: () => Int }) id: number){
+  deleteEmployee(@Args('id', { type: () => Int }) id: number) {
     return this.employeesService.delete(id);
+  }
+
+  @Mutation(() => Employee)
+  updateEmployee(@Args('id', { type: () => Int }) id: number, @Args('updateEmployeeInput') updateEmployeeInput: UpdateEmployee) {
+    return this.employeesService.update(id, updateEmployeeInput);
   }
 }

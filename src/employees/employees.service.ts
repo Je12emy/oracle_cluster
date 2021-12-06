@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import CreateEmployee from './dto/create-employee.dto';
+import UpdateEmployee from './dto/update-employee.dto';
 import { Employee } from './entities/employee.entity';
 
 @Injectable()
@@ -26,5 +27,11 @@ export class EmployeesService {
   async delete(id: number) {
     const employee = await this.findOne(id);
     return this.employeeRepository.remove(employee);
+  }
+
+  async update(id: number, input: UpdateEmployee) {
+    const employee = await this.findOne(id);
+    Object.assign(employee, input)
+    return this.employeeRepository.save(employee);
   }
 }
